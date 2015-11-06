@@ -1,5 +1,5 @@
 
-# Projeto Inegrador
+# Projeto Integrador
 
 <h2 style="margin-left: 40px;">Apollo</h2>
 <p>Jogo desenvolvido para o projeto integrador do IFZN, no ano de 2015, pelos alunos:</p>
