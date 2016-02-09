@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CityController : MonoBehaviour {
@@ -110,12 +111,18 @@ public class CityController : MonoBehaviour {
 		}
 
 	}
+
+
 	void Start () { //start significa iniciar
-		
+		x = GameObject.Find("textDia").GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () { //update significa atualizar
 		updateTempo();
+		x.text = "XUI";
 	}
+
+	private Text x;
+
 }
