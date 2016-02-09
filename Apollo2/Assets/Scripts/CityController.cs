@@ -3,59 +3,78 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class CityController : MonoBehaviour {
-	public int residencia, //bem louco
-			   saude,
-			   escola,
-			   industria,
-			   seguranca,
-			   alimento,
-			   energia,
-			   prestigio;
-	public int maxRecurso = 10;
-	public int maxTempo = 30;
+	public int 	residencia, //bem louco
+			   	saude,
+			   	escola,
+			   	industria,
+			   	seguranca,
+			   	alimento,
+			   	energia,
+			   	prestigio,
+				maxRecurso,
+				maxTempo;
+
 	public float tempo;
+
 	public int tempoInt;
+
+	private Text 	varTextDia,
+					varTextResidencia,
+					varTextSaude,
+					varTextEscola,
+					varTextIndustria,
+					varTextSeguranca,
+					varTextAlimento,
+					varTextEnergia,
+					varTextPrestigio;
+
 	// Use this for initialization
-	public void addEscola () {
+	public void addEscola (int valor) {
 		if (escola < maxRecurso) {
-			escola += 1;
-			energia -= 1;
+			escola += valor;
+			energia -= valor;
 		}
+		varTextEscola.text = "Escola\n" + "(" + escola + ")";
 	}
 
-	public void addSaude () {
+	public void addSaude (int valor) {
 		if (saude < maxRecurso) {
-			saude += 1;
-			energia -= 1;
+			saude += valor;
+			energia -= valor;
 		}
+		varTextSaude.text = "Saude\n" + "(" + saude + ")";
 	}
 
-	public void addAlimento () {
+	public void addAlimento (int valor) {
 		if (alimento < maxRecurso) {
-			alimento += 1;
-			energia -= 1;
+			alimento += valor;
+			energia -= valor;
 		}
+		varTextAlimento.text = "Alimento\n" + "(" + alimento + ")";
 	}
 
-	public void addPolicia () {
+	public void addPolicia (int valor) {
 		if (seguranca < maxRecurso) {
-			seguranca += 1;
-			energia -= 1;
+			seguranca += valor;
+			energia -= valor;
 		}
+		varTextSeguranca.text = "Segurança\n" + "(" + seguranca + ")";
 	}
 
-	public void addIndustria () {
+	public void addIndustria (int valor) {
 		if (industria < maxRecurso) {
-			industria += 1;
-			energia -= 1;
+			industria += valor;
+			energia -= valor;
 		}
+		varTextIndustria.text = "Industria\n" + "(" + industria + ")";
 	}
 
-	public void addResidencia () {
+	public void addResidencia (int valor) {
 		if (residencia < maxRecurso) {
-			residencia += 1;
-			energia -= 1;
+			residencia += valor;
+			energia -= valor;
 		}
+		varTextResidencia.text = "Residencia\n" + "(" + residencia + ")";
 	}
 
 	public void updateTempo(){
@@ -69,23 +88,21 @@ public class CityController : MonoBehaviour {
 			tempoInt = (int)tempo;
 			updateRecursos ();
 		}
+		varTextDia.text = ""+tempoInt;
 	}
 
 	public void updateRecursos(){
 		if (tempoInt%3 == 0) {
-			residencia -= 1;
-			saude -= 1;
-			escola -= 1;
-			Debug.Log ("3 " + tempoInt);
+			addResidencia(-1);
+			addSaude(-1);
+			addEscola(-1);
 			updatePrestigo ();
 		} else if (tempoInt%5 == 0) {
-			industria -= 1;
-			seguranca -= 1;
-			Debug.Log ("5 " + tempoInt);
+			addIndustria(-1);
+			addPolicia(-1);
 			updatePrestigo ();
 		} else if (tempoInt%7 == 0) {
-			alimento -= 1;
-			Debug.Log ("7 " + tempoInt);
+			addAlimento (-1);
 			updatePrestigo ();
 		}
 	}
@@ -114,15 +131,23 @@ public class CityController : MonoBehaviour {
 
 
 	void Start () { //start significa iniciar
-		x = GameObject.Find("textDia").GetComponent<Text>();
+		varTextDia = GameObject.Find("textDia").GetComponent<Text>();
+		varTextResidencia = GameObject.Find("textResidencia").GetComponent<Text>();
+		varTextSaude = GameObject.Find("textSaude").GetComponent<Text>();
+		varTextEscola = GameObject.Find("textEscola").GetComponent<Text>();
+		varTextIndustria = GameObject.Find("textIndustria").GetComponent<Text>();
+		varTextSeguranca = GameObject.Find("textPolicia").GetComponent<Text>();
+		varTextAlimento = GameObject.Find("textAlimento").GetComponent<Text>();
+		varTextEnergia = GameObject.Find("textEnergia").GetComponent<Text>();
+		varTextPrestigio = GameObject.Find("textPrestigio").GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () { //update significa atualizar
 		updateTempo();
-		x.text = "XUI";
+
 	}
 
-	private Text x;
+
 
 }
