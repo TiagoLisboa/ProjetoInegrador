@@ -29,52 +29,52 @@ public class CityController : MonoBehaviour {
 					varTextPrestigio;
 
 	// Use this for initialization
-	public void addEscola (int valor) {
+	public void addEscola () {
 		if (escola < maxRecurso) {
-			escola += valor;
-			energia -= valor;
+			escola += 1;
+			energia -= 1;
 		}
-		varTextEscola.text = "Escola\n" + "(" + escola + ")";
+
 	}
 
-	public void addSaude (int valor) {
+	public void addSaude () {
 		if (saude < maxRecurso) {
-			saude += valor;
-			energia -= valor;
+			saude += 1;
+			energia -= 1;
 		}
-		varTextSaude.text = "Saude\n" + "(" + saude + ")";
+
 	}
 
-	public void addAlimento (int valor) {
+	public void addAlimento () {
 		if (alimento < maxRecurso) {
-			alimento += valor;
-			energia -= valor;
+			alimento += 1;
+			energia -= 1;
 		}
-		varTextAlimento.text = "Alimento\n" + "(" + alimento + ")";
+
 	}
 
-	public void addPolicia (int valor) {
+	public void addPolicia () {
 		if (seguranca < maxRecurso) {
-			seguranca += valor;
-			energia -= valor;
+			seguranca += 1;
+			energia -= 1;
 		}
-		varTextSeguranca.text = "Segurança\n" + "(" + seguranca + ")";
+
 	}
 
-	public void addIndustria (int valor) {
+	public void addIndustria () {
 		if (industria < maxRecurso) {
-			industria += valor;
-			energia -= valor;
+			industria += 1;
+			energia -= 1;
 		}
-		varTextIndustria.text = "Industria\n" + "(" + industria + ")";
+
 	}
 
-	public void addResidencia (int valor) {
+	public void addResidencia () {
 		if (residencia < maxRecurso) {
-			residencia += valor;
-			energia -= valor;
+			residencia += 1;
+			energia -= 1;
 		}
-		varTextResidencia.text = "Residencia\n" + "(" + residencia + ")";
+
 	}
 
 	public void updateTempo(){
@@ -93,16 +93,19 @@ public class CityController : MonoBehaviour {
 
 	public void updateRecursos(){
 		if (tempoInt%3 == 0) {
-			addResidencia(-1);
-			addSaude(-1);
-			addEscola(-1);
+			residencia -= 1;
+			saude -= 1;
+			escola -= 1;
+			Debug.Log ("3 " + tempoInt);
 			updatePrestigo ();
 		} else if (tempoInt%5 == 0) {
-			addIndustria(-1);
-			addPolicia(-1);
+			industria -= 1;
+			seguranca -= 1;
+			Debug.Log ("5 " + tempoInt);
 			updatePrestigo ();
 		} else if (tempoInt%7 == 0) {
-			addAlimento (-1);
+			alimento -= 1;
+			Debug.Log ("7 " + tempoInt);
 			updatePrestigo ();
 		}
 	}
@@ -129,6 +132,17 @@ public class CityController : MonoBehaviour {
 
 	}
 
+	void updateGUI(){
+		varTextEscola.text = "Escola\n" + "(" + escola + ")";
+		varTextSaude.text = "Saude\n" + "(" + saude + ")";
+		varTextAlimento.text = "Alimento\n" + "(" + alimento + ")";
+		varTextSeguranca.text = "Segurança\n" + "(" + seguranca + ")";
+		varTextIndustria.text = "Industria\n" + "(" + industria + ")";
+		varTextResidencia.text = "Residencia\n" + "(" + residencia + ")";
+		varTextEnergia.text = ""+energia;
+		varTextPrestigio.text = ""+prestigio;
+	}
+
 
 	void Start () { //start significa iniciar
 		varTextDia = GameObject.Find("textDia").GetComponent<Text>();
@@ -141,11 +155,12 @@ public class CityController : MonoBehaviour {
 		varTextEnergia = GameObject.Find("textEnergia").GetComponent<Text>();
 		varTextPrestigio = GameObject.Find("textPrestigio").GetComponent<Text>();
 	}
+
 	
 	// Update is called once per frame
 	void Update () { //update significa atualizar
 		updateTempo();
-
+		updateGUI();
 	}
 
 
