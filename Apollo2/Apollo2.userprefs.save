@@ -1,0 +1,15 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CityController.cs">
+    <Files>
+<<<<<<< HEAD
+      <File FileName="Assets/Scripts/CityController.cs" Line="64" Column="33" />
+=======
+      <File FileName="Assets\Scripts\CityController.cs" Line="33" Column="30" />>>>>>>> d2a96aba6e29fd5e2c14d9ea6c43afbd1b077aae
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
