@@ -12,7 +12,8 @@ public class CityController : MonoBehaviour {
 			   	energia,
 			   	prestigio,
 				maxRecurso,
-				maxTempo;
+				maxTempo,
+				dias = 0;
 
 	public float tempo;
 
@@ -88,26 +89,35 @@ public class CityController : MonoBehaviour {
 			tempoInt = (int)tempo;
 			updateRecursos ();
 		}
-		varTextDia.text = ""+tempoInt;
+		varTextDia.text = dias + " / " + tempoInt;
 	}
-
+	public double aux;
 	public void updateRecursos(){
-		if (tempoInt%3 == 0) {
+		if (tempoInt % 3 == 0) {
 			residencia -= 1;
 			saude -= 1;
 			escola -= 1;
 			Debug.Log ("3 " + tempoInt);
 			updatePrestigo ();
-		} else if (tempoInt%5 == 0) {
+		} else if (tempoInt % 5 == 0) {
 			industria -= 1;
 			seguranca -= 1;
 			Debug.Log ("5 " + tempoInt);
 			updatePrestigo ();
-		} else if (tempoInt%7 == 0) {
+		} else if (tempoInt % 7 == 0) {
 			alimento -= 1;
 			Debug.Log ("7 " + tempoInt);
 			updatePrestigo ();
+		} else if (tempoInt == 29) {
+			dias++;
+			Debug.Log (dias);
+			aux = energia*1.1;
+			energia = (int) aux;
+			if (energia > 100) {
+				energia = 100;
+			}
 		}
+
 	}
 
 	public void updatePrestigo () {
@@ -129,7 +139,6 @@ public class CityController : MonoBehaviour {
 		if (alimento < 0) {
 			prestigio += alimento;
 		}
-
 	}
 
 	void updateGUI(){
