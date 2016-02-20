@@ -15,9 +15,15 @@ public class CityController : MonoBehaviour {
 				maxTempo,
 				dias = 0;
 
+	public bool rel = false;
+
 	public float tempo;
 
 	public int tempoInt;
+
+	public GameObject relatorioPanel;
+
+	private Animator anim;
 
 	private Text 	varTextDia,
 					varTextResidencia,
@@ -152,6 +158,18 @@ public class CityController : MonoBehaviour {
 		varTextPrestigio.text = ""+prestigio;
 	}
 
+	public void sideRelatorio () {
+		if (rel == false) {
+			anim.enabled = true;
+			rel = true;
+			anim.Play ("relatorioSlide");
+		} else if (rel == true) {
+			anim.enabled = true;
+			rel = false;
+			anim.Play ("relatorioSlideBack");
+		}
+	}
+
 
 	void Start () { //start significa iniciar
 		varTextDia = GameObject.Find("textDia").GetComponent<Text>();
@@ -163,6 +181,8 @@ public class CityController : MonoBehaviour {
 		varTextAlimento = GameObject.Find("textAlimento").GetComponent<Text>();
 		varTextEnergia = GameObject.Find("textEnergia").GetComponent<Text>();
 		varTextPrestigio = GameObject.Find("textPrestigio").GetComponent<Text>();
+
+		anim = relatorioPanel.GetComponent<Animator> ();
 	}
 
 	
