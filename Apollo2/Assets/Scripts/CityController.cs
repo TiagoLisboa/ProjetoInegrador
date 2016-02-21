@@ -13,13 +13,13 @@ public class CityController : MonoBehaviour {
 			   	prestigio,
 				maxRecurso,
 				maxTempo,
-				dias = 0;
+				dias = 0,
+				tempoInt;
 
-	public bool rel = false;
+	public bool rel = false,
+				pause = false;
 
 	public float tempo;
-
-	public int tempoInt;
 
 	public GameObject relatorioPanel;
 
@@ -97,8 +97,10 @@ public class CityController : MonoBehaviour {
 		}
 		varTextDia.text = dias + " / " + tempoInt;
 	}
-	public double aux;
+
+
 	public void updateRecursos(){
+		double aux;
 		if (tempoInt % 3 == 0) {
 			residencia -= 1;
 			saude -= 1;
@@ -162,10 +164,12 @@ public class CityController : MonoBehaviour {
 		if (rel == false) {
 			anim.enabled = true;
 			rel = true;
+			pause = true;
 			anim.Play ("relatorioSlide");
 		} else if (rel == true) {
 			anim.enabled = true;
 			rel = false;
+			pause = false;
 			anim.Play ("relatorioSlideBack");
 		}
 	}
@@ -190,6 +194,12 @@ public class CityController : MonoBehaviour {
 	void Update () { //update significa atualizar
 		updateTempo();
 		updateGUI();
+
+		if (pause == false) {
+			Time.timeScale = 1;
+		} else {
+			Time.timeScale = 0;
+		}
 	}
 
 
