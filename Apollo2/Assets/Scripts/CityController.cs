@@ -41,10 +41,10 @@ public class CityController : MonoBehaviour {
 								"Sapien in monti palavris qui num significa nadis i pareci latim."};
 
 	private string[,] questoes = {
-		{ "AAAAAAAAAAAAA", "a", "a", "a", "a" },
-		{ "BBBBBBBBBBBBB", "b", "b", "b", "b" },
-		{ "CCCCCCCCCCCCC", "c", "c", "c", "c" },
-		{ "DDDDDDDDDDDDD", "d", "d", "d", "d" },
+		{ "AAAAAAAAAAAAA", "a", "a", "a", "a", "a" },
+		{ "BBBBBBBBBBBBB", "b", "b", "b", "b", "b" },
+		{ "CCCCCCCCCCCCC", "c", "c", "c", "c", "c" },
+		{ "DDDDDDDDDDDDD", "d", "d", "d", "d", "d" },
 	}; 
 
 	private Text 	varTextDia,
@@ -90,6 +90,14 @@ public class CityController : MonoBehaviour {
 			resD.text = questoes [questG, 4];
 		} else {
 			selectQuestoes ();
+		}
+	}
+
+	public void checarResp(string x) {
+		if (x == questoes [questG, 5]) {
+			Debug.Log ("Acertou, miseravi");
+		} else {
+			Debug.Log ("Errou, retards");
 		}
 	}
 
