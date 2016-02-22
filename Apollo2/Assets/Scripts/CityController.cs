@@ -14,7 +14,9 @@ public class CityController : MonoBehaviour {
 				maxRecurso,
 				maxTempo,
 				dias = 0,
-				tempoInt;
+				tempoInt,
+				quest = 0,
+				aviso = 0;
 
 	public bool rel = false,
 				pause = false;
@@ -25,6 +27,20 @@ public class CityController : MonoBehaviour {
 
 	private Animator anim;
 
+	private string[] quests = {	"",
+								"Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis.",
+								"Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis.",
+								"Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.",
+								"Manduma pindureta quium dia nois paga.",
+								"Sapien in monti palavris qui num significa nadis i pareci latim."};
+
+	private string[] avisos = {	"",
+								"Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis.",
+								"Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis.",
+								"Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.",
+								"Manduma pindureta quium dia nois paga.",
+								"Sapien in monti palavris qui num significa nadis i pareci latim."};
+
 	private Text 	varTextDia,
 					varTextResidencia,
 					varTextSaude,
@@ -33,9 +49,20 @@ public class CityController : MonoBehaviour {
 					varTextSeguranca,
 					varTextAlimento,
 					varTextEnergia,
-					varTextPrestigio;
+					varTextPrestigio,
+					varTextRelatorio;
 
 	// Use this for initialization
+	public void updateRelatorio(){
+		quest = (Random.Range(1, quests.Length-1));
+		aviso = (Random.Range (1, avisos.Length - 1));
+		varTextRelatorio.text = "Missões Diárias:\n" + quests[quest] + "\n" + 
+			"------------------------------------------------------" + "\n" +
+			"Avisos:\n" + avisos[aviso] + "\n" +
+			"------------------------------------------------------";
+
+	}
+
 	public void addEscola () {
 		if (escola < maxRecurso) {
 			escola += 1;
@@ -119,11 +146,13 @@ public class CityController : MonoBehaviour {
 		} else if (tempoInt == 29) {
 			dias++;
 			Debug.Log (dias);
-			aux = energia*1.1;
-			energia = (int) aux;
+			aux = energia * 1.1;
+			energia = (int)aux;
 			if (energia > 100) {
 				energia = 100;
 			}
+		} else if (tempoInt == 1) {
+			updateRelatorio ();
 		}
 
 	}
@@ -185,6 +214,7 @@ public class CityController : MonoBehaviour {
 		varTextAlimento = GameObject.Find("textAlimento").GetComponent<Text>();
 		varTextEnergia = GameObject.Find("textEnergia").GetComponent<Text>();
 		varTextPrestigio = GameObject.Find("textPrestigio").GetComponent<Text>();
+		varTextRelatorio = GameObject.Find("textRelatorio").GetComponent<Text>();
 
 		anim = relatorioPanel.GetComponent<Animator> ();
 	}
