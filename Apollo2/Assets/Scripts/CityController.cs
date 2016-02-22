@@ -16,16 +16,22 @@ public class CityController : MonoBehaviour {
 				dias = 0,
 				tempoInt,
 				quest = 0,
-				aviso = 0;
+				questG = 0;
+
+	public int 	auxQuest,
+				auxQuestG;
 
 	public bool rel = false,
+				quel = false,
 				pause = false;
 
 	public float tempo;
 
 	public GameObject relatorioPanel;
+	public GameObject quesPanel;
 
-	private Animator anim;
+	private Animator anim1;
+	private Animator anime;
 
 	private string[] quests = {	"",
 								"Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis.",
@@ -34,12 +40,12 @@ public class CityController : MonoBehaviour {
 								"Manduma pindureta quium dia nois paga.",
 								"Sapien in monti palavris qui num significa nadis i pareci latim."};
 
-	private string[] avisos = {	"",
-								"Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis.",
-								"Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis.",
-								"Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.",
-								"Manduma pindureta quium dia nois paga.",
-								"Sapien in monti palavris qui num significa nadis i pareci latim."};
+	private string[,] questoes = {
+		{ "AAAAAAAAAAAAA", "a", "a", "a", "a" },
+		{ "BBBBBBBBBBBBB", "b", "b", "b", "b" },
+		{ "CCCCCCCCCCCCC", "c", "c", "c", "c" },
+		{ "DDDDDDDDDDDDD", "d", "d", "d", "d" },
+	}; 
 
 	private Text 	varTextDia,
 					varTextResidencia,
@@ -52,15 +58,39 @@ public class CityController : MonoBehaviour {
 					varTextPrestigio,
 					varTextRelatorio;
 
+	private Text 	questao,
+					resA,
+					resB,
+					resC,
+					resD,
+					textChamada;
+
 	// Use this for initialization
 	public void updateRelatorio(){
 		quest = (Random.Range(1, quests.Length-1));
-		aviso = (Random.Range (1, avisos.Length - 1));
-		varTextRelatorio.text = "Missões Diárias:\n" + quests[quest] + "\n" + 
-			"------------------------------------------------------" + "\n" +
-			"Avisos:\n" + avisos[aviso] + "\n" +
-			"------------------------------------------------------";
+		if (quest != auxQuest) {
+			auxQuest = quest;
+			varTextRelatorio.text = "Missões Diárias:\n" + quests [quest] + "\n" +
+			"-----------------------------------------------------------" + "\n";
+		} else {
+			updateRelatorio ();
+		}
 
+	}
+
+	public void selectQuestoes() {
+		questG = (Random.Range(0, questoes.GetLength(0)));
+		if (questG != auxQuestG) {
+			auxQuestG = questG;
+			questao.text = questoes [questG, 0];
+			textChamada.text = questoes [questG, 0];
+			resA.text = questoes [questG, 1];
+			resB.text = questoes [questG, 2];
+			resC.text = questoes [questG, 3];
+			resD.text = questoes [questG, 4];
+		} else {
+			selectQuestoes ();
+		}
 	}
 
 	public void addEscola () {
@@ -152,6 +182,7 @@ public class CityController : MonoBehaviour {
 				energia = 100;
 			}
 		} else if (tempoInt == 1) {
+			selectQuestoes ();
 			updateRelatorio ();
 		}
 
@@ -189,17 +220,29 @@ public class CityController : MonoBehaviour {
 		varTextPrestigio.text = ""+prestigio;
 	}
 
-	public void sideRelatorio () {
+	public void slideRelatorio () {
 		if (rel == false) {
-			anim.enabled = true;
+			anim1.enabled = true;
 			rel = true;
 			pause = true;
-			anim.Play ("relatorioSlide");
+			anim1.Play ("relatorioSlide");
 		} else if (rel == true) {
-			anim.enabled = true;
+			anim1.enabled = true;
 			rel = false;
 			pause = false;
-			anim.Play ("relatorioSlideBack");
+			anim1.Play ("relatorioSlideBack");
+		}
+	}
+
+	public void slideQuestionario () {
+		if (quel == false) {
+			anime.enabled = true;
+			quel = true;
+			anime.Play ("questionarioSlide");
+		} else if (quel == true) {
+			anime.enabled = true;
+			quel = false;
+			anime.Play ("questionarioSlideBack");
 		}
 	}
 
@@ -216,7 +259,15 @@ public class CityController : MonoBehaviour {
 		varTextPrestigio = GameObject.Find("textPrestigio").GetComponent<Text>();
 		varTextRelatorio = GameObject.Find("textRelatorio").GetComponent<Text>();
 
-		anim = relatorioPanel.GetComponent<Animator> ();
+		textChamada = GameObject.Find("textChamada").GetComponent<Text>();
+		questao = GameObject.Find("questao").GetComponent<Text>();
+		resA = GameObject.Find("resA").GetComponent<Text>();
+		resB = GameObject.Find("resB").GetComponent<Text>();
+		resC = GameObject.Find("resC").GetComponent<Text>();
+		resD = GameObject.Find("resD").GetComponent<Text>();
+
+		anim1 = relatorioPanel.GetComponent<Animator> ();
+		anime = quesPanel.GetComponent<Animator> ();
 	}
 
 	
