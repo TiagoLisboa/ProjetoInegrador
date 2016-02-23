@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using AssemblyCSharp;
 
 public class CityController : MonoBehaviour {
 	public int 	residencia, //bem louco
@@ -22,6 +23,7 @@ public class CityController : MonoBehaviour {
 				auxQuestG;
 
 	public bool rel = false,
+				temQuesti = false,
 				quel = false,
 				pause = false;
 

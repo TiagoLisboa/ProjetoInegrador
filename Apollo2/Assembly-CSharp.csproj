@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CityController.cs" />
+     <Compile Include="Assets\Scripts\mainController.cs" />
+     <Compile Include="Assets\Scripts\mainModel.cs" />
+     <Compile Include="Assets\Scripts\mainView.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
