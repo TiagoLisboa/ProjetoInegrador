@@ -8,12 +8,14 @@ public class mainController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gerarMissao ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		contarTempo ();
 		gameover ();
+		verificarPausa ();
 	}
 
 	/**********************************************************************/
@@ -22,7 +24,7 @@ public class mainController : MonoBehaviour {
 
 
 	public void contarTempo(){
-		if (mainModel.tempo >= mainModel.maxTempo) {
+		if (mainModel.tempo > mainModel.maxTempo) {
 			mainModel.tempo = 0;
 			mainModel.tempoInt = 0;
 		} else if (mainModel.tempo < mainModel.maxTempo) {
@@ -54,7 +56,9 @@ public class mainController : MonoBehaviour {
 			if(mainModel.alimento > -1)
 				mainModel.alimento -= 1;
 			atualizarPrestigio ();
-		} else if (mainModel.tempoInt == 29) {
+		} else if (mainModel.tempoInt >= 30) {
+			gerarQuestoes ();
+			gerarMissao ();
 			mainModel.dias++;
 			Debug.Log (mainModel.dias);
 			aux = mainModel.energia * 1.1;
@@ -62,9 +66,6 @@ public class mainController : MonoBehaviour {
 			if (mainModel.energia > 100) {
 				mainModel.energia = 100;
 			}
-		} else if (mainModel.tempoInt == 1) {
-			//selecionarQuestoes ();
-			//atualizarRelatorio ();
 		}
 	}
 
@@ -110,6 +111,49 @@ public class mainController : MonoBehaviour {
 		}
 	}
 
+	public void gerarMissao(){
+		mainModel.missao = (Random.Range(1, mainModel.quests.Length));
+		if (mainModel.missao != mainModel.auxMissao) {
+			mainModel.auxMissao = mainModel.missao;
+			Debug.Log (mainModel.missao);
+		} else {
+			gerarMissao ();
+		}
+	}
+
+	public void gerarQuestoes () {
+		int rando = Random.Range (0, 100);
+		Debug.Log ("random = " + rando);
+		if (rando < 60) {
+			mainModel.temQuel = true;
+			mainModel.questG = (Random.Range (0, mainModel.questoes.GetLength (0)));
+			if (mainModel.questG != mainModel.auxQuestG) {
+				mainModel.auxQuestG = mainModel.questG;
+			} else {
+				gerarQuestoes ();
+			}
+		}
+	}
+
+	public void verificarResposta (string resposta) {
+		if (resposta == mainModel.questoes [mainModel.auxQuestG, 5]) {
+			mainModel.energia += int.Parse( mainModel.questoes [mainModel.auxQuestG, 6]);
+			if (mainModel.energia > 100)
+				mainModel.energia = 100;
+			mainModel.temQuel = false;
+		} else {
+			Debug.Log ("errou");
+			mainModel.temQuel = false;
+		}
+	}
+
+	public void verificarPausa () {
+		if (mainModel.pause == true) {
+			Time.timeScale = 0;
+		} else {
+			Time.timeScale = 1;
+		}
+	}
 
 	public void adicionarRec (int recu){
 		if (mainModel.energia > 0) {
