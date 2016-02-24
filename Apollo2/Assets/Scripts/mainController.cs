@@ -138,6 +138,7 @@ public class mainController : MonoBehaviour {
 	public void verificarResposta (string resposta) {
 		if (resposta == mainModel.questoes [mainModel.auxQuestG, 5]) {
 			mainModel.energia += int.Parse( mainModel.questoes [mainModel.auxQuestG, 6]);
+			Debug.Log ("acertou");
 			if (mainModel.energia > 100)
 				mainModel.energia = 100;
 			mainModel.temQuel = false;
