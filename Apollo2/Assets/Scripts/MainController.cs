@@ -113,7 +113,8 @@ public class MainController : MonoBehaviour {
 	}
 
 	public void gerarMissao(){
-		MainModel.missao = (Random.Range(1, MainModel.quests.Length));
+		MainModel.falhouMissao = false;
+		MainModel.missao = (Random.Range(1, MainModel.quests.GetLength(0)));
 		if (MainModel.missao != MainModel.auxMissao) {
 			MainModel.auxMissao = MainModel.missao;
 			Debug.Log (MainModel.missao);
@@ -140,8 +141,8 @@ public class MainController : MonoBehaviour {
 		Debug.Log (MainModel.tempoMissao);
 		if (MainModel.tempoMissao == 30) {
 			MainModel.tempoMissao = 0;
-			MainModel.prestigio += 5;
-			Debug.Log ("ta funfando");
+			MainModel.falhouMissao = false;
+			MainModel.prestigio += int.Parse(MainModel.quests[MainModel.missao, 1]);
 		}else if (MainModel.tempoMissao < 30) {
 			if (MainModel.missao == 1 && MainModel.residencia > 5) {
 				MainModel.tempoMissao++;
@@ -157,6 +158,7 @@ public class MainController : MonoBehaviour {
 				MainModel.tempoMissao++;
 			} else {
 				MainModel.tempoMissao = 35;
+				MainModel.falhouMissao = true;
 			}
 		} else if (MainModel.tempoMissao > 30) {
 			MainModel.tempoMissao = 0;

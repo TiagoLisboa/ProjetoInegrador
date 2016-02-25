@@ -4,7 +4,7 @@ namespace AssemblyCSharp
 {
 	public static class MainModel
 	{
-		public static float tempo = 29;
+		public static float tempo = 0;
 
 		public static int 	residencia = 10, //bem louco
 							saude = 10,
@@ -27,16 +27,17 @@ namespace AssemblyCSharp
 
 		public static bool 	temQuel = false,
 							quel = false,
-							pause = false;
+							pause = false,
+							falhouMissao = false;
 
-		public static string[] quests = {	
-			"",
-			"Mantenha a quantidade de energia nas residências acima de 5",
-			"Mantenha a quantidade de energia nas industrias acima de 5",
-			"Mantenha a quantidade de energia nos hospitais acima de 5",
-			"Mantenha a quantidade de energia para o setor de segurança acima de 5",
-			"Mantenha a quantidade de energia nos supermecados acima de 5",
-			"Mantenha a quantidade de energia nas escolas acima de 5"
+		public static string[,] quests = {	
+			{"", ""},
+			{"Mantenha a quantidade de energia nas residências acima de 5", "10"},
+			{"Mantenha a quantidade de energia nas industrias acima de 5", "5"},
+			{"Mantenha a quantidade de energia nos hospitais acima de 5", "10"},
+			{"Mantenha a quantidade de energia para o setor de segurança acima de 5", "5"},
+			{"Mantenha a quantidade de energia nos supermecados acima de 5", "5"},
+			{"Mantenha a quantidade de energia nas escolas acima de 5", "10"}
 		};
 
 		public static string[,] questoes = {

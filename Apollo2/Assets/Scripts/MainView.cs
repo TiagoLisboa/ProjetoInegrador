@@ -131,7 +131,7 @@ public class MainView : MonoBehaviour {
 		if (MainModel.alimento < ruinzinho) {
 			varBarAlimento.GetComponent<Image>().color = Color.red;
 		} else if (MainModel.alimento < bom) {
-			varBarAlimento.GetComponent<Image>().color = Color.blue;
+			varBarAlimento.GetComponent<Image>().color = new Color32(254, 122, 21, 255);
 		} else {
 			varBarAlimento.GetComponent<Image>().color = Color.green;
 		}
@@ -139,7 +139,7 @@ public class MainView : MonoBehaviour {
 		if (MainModel.escola < ruinzinho) {
 			varBarEscola.GetComponent<Image>().color = Color.red;
 		} else if (MainModel.escola < bom) {
-			varBarEscola.GetComponent<Image>().color = Color.blue;
+			varBarEscola.GetComponent<Image>().color = new Color32(254, 122, 21, 255);
 		} else {
 			varBarEscola.GetComponent<Image>().color = Color.green;
 		}
@@ -147,7 +147,7 @@ public class MainView : MonoBehaviour {
 		if (MainModel.industria < ruinzinho) {
 			varBarIndustria.GetComponent<Image>().color = Color.red;
 		} else if (MainModel.industria < bom) {
-			varBarIndustria.GetComponent<Image>().color = Color.blue;
+			varBarIndustria.GetComponent<Image>().color = new Color32(254, 122, 21, 255);
 		} else {
 			varBarIndustria.GetComponent<Image>().color = Color.green;
 		}
@@ -155,7 +155,7 @@ public class MainView : MonoBehaviour {
 		if (MainModel.residencia < ruinzinho) {
 			varBarResidencia.GetComponent<Image>().color = Color.red;
 		} else if (MainModel.residencia < bom) {
-			varBarResidencia.GetComponent<Image>().color = Color.blue;
+			varBarResidencia.GetComponent<Image>().color = new Color32(254, 122, 21, 255);
 		} else {
 			varBarResidencia.GetComponent<Image>().color = Color.green;
 		}
@@ -163,7 +163,7 @@ public class MainView : MonoBehaviour {
 		if (MainModel.saude < ruinzinho) {
 			varBarSaude.GetComponent<Image>().color = Color.red;
 		} else if (MainModel.saude < bom) {
-			varBarSaude.GetComponent<Image>().color = Color.blue;
+			varBarSaude.GetComponent<Image>().color = new Color32(254, 122, 21, 255);
 		} else {
 			varBarSaude.GetComponent<Image>().color = Color.green;
 		}
@@ -171,7 +171,7 @@ public class MainView : MonoBehaviour {
 		if (MainModel.seguranca < ruinzinho) {
 			varBarSeguranca.GetComponent<Image>().color = Color.red;
 		} else if (MainModel.seguranca < bom) {
-			varBarSeguranca.GetComponent<Image>().color = Color.blue;
+			varBarSeguranca.GetComponent<Image>().color = new Color32(254, 122, 21, 255);
 		} else {
 			varBarSeguranca.GetComponent<Image>().color = Color.green;
 		}
@@ -187,11 +187,11 @@ public class MainView : MonoBehaviour {
 	}
 
 	public void atualizarRelatorio () {
-		varTextRelatorio.text = "Missões Diárias:\n\n" + MainModel.quests [MainModel.missao] + "\n\n";
+		varTextRelatorio.text = "Missões Diárias:\n\n" + MainModel.quests [MainModel.missao, 0] + "\n\n";
 	}
 
 	public void revelarResultadoMissao () {
-		if (MainModel.tempoMissao == 35) {
+		if (MainModel.falhouMissao == true) {
 			varTextResultado.text = "Falhou!";
 		} else {
 			varTextResultado.text = "";
