@@ -6,18 +6,19 @@ namespace AssemblyCSharp
 	{
 		public static float tempo = 29;
 
-		public static int 	residencia = 5, //bem louco
-							saude = 5,
-							escola = 5,
-							industria = 5,
-							seguranca = 5,
-							alimento = 5,
+		public static int 	residencia = 10, //bem louco
+							saude = 10,
+							escola = 10,
+							industria = 10,
+							seguranca = 10,
+							alimento = 10,
 							energia = 100,
-							prestigio = 100,
+							prestigio = 50,
 							maxRecurso = 10,
 							maxTempo = 31,
 							dias,
-							tempoInt;
+							tempoInt,
+							tempoMissao = 35;
 
 		public static int 	auxMissao,
 							auxQuestG,
@@ -30,11 +31,12 @@ namespace AssemblyCSharp
 
 		public static string[] quests = {	
 			"",
-			"Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis.",
-			"Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis.",
-			"Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.",
-			"Manduma pindureta quium dia nois paga.",
-			"Sapien in monti palavris qui num significa nadis i pareci latim."
+			"Mantenha a quantidade de energia nas residências acima de 5",
+			"Mantenha a quantidade de energia nas industrias acima de 5",
+			"Mantenha a quantidade de energia nos hospitais acima de 5",
+			"Mantenha a quantidade de energia para o setor de segurança acima de 5",
+			"Mantenha a quantidade de energia nos supermecados acima de 5",
+			"Mantenha a quantidade de energia nas escolas acima de 5"
 		};
 
 		public static string[,] questoes = {

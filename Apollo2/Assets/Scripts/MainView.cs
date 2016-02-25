@@ -16,7 +16,8 @@ public class MainView : MonoBehaviour {
 					varTextSeguranca,
 					varTextAlimento,
 					varTextPrestigio,
-					varTextRelatorio;
+					varTextRelatorio,
+					varTextResultado;
 
 	private Text 	questao,
 					resA,
@@ -60,6 +61,7 @@ public class MainView : MonoBehaviour {
 
 		//relatorio e questinarios
 		varTextRelatorio = GameObject.Find("missoes").GetComponent<Text>();
+		varTextResultado = GameObject.Find("resultado").GetComponent<Text>();
 		questao = GameObject.Find("questao").GetComponent<Text>();
 		resA = GameObject.Find("resA").GetComponent<Text>();
 		resB = GameObject.Find("resB").GetComponent<Text>();
@@ -91,6 +93,7 @@ public class MainView : MonoBehaviour {
 		atualizarPrestigio ();
 		atualizarRelatorio ();
 		atualizarQuestionario ();
+		revelarResultadoMissao ();
 
 		notQues ();
 	}
@@ -149,9 +152,9 @@ public class MainView : MonoBehaviour {
 			varBarIndustria.GetComponent<Image>().color = Color.green;
 		}
 
-		if (MainModel.residencia < bom) {
+		if (MainModel.residencia < ruinzinho) {
 			varBarResidencia.GetComponent<Image>().color = Color.red;
-		} else if (MainModel.residencia < ruinzinho) {
+		} else if (MainModel.residencia < bom) {
 			varBarResidencia.GetComponent<Image>().color = Color.blue;
 		} else {
 			varBarResidencia.GetComponent<Image>().color = Color.green;
@@ -185,6 +188,14 @@ public class MainView : MonoBehaviour {
 
 	public void atualizarRelatorio () {
 		varTextRelatorio.text = "Missões Diárias:\n\n" + MainModel.quests [MainModel.missao] + "\n\n";
+	}
+
+	public void revelarResultadoMissao () {
+		if (MainModel.tempoMissao == 35) {
+			varTextResultado.text = "Falhou!";
+		} else {
+			varTextResultado.text = "";
+		}
 	}
 
 	public void atualizarQuestionario () {

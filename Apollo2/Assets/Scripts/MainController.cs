@@ -33,6 +33,7 @@ public class MainController : MonoBehaviour {
 		if ((int)MainModel.tempo > MainModel.tempoInt) {
 			MainModel.tempoInt = (int)MainModel.tempo;
 			atualizarRecursos ();
+			validarMissao ();
 		}
 	}
 
@@ -135,6 +136,33 @@ public class MainController : MonoBehaviour {
 		}
 	}
 
+	public void validarMissao () {
+		Debug.Log (MainModel.tempoMissao);
+		if (MainModel.tempoMissao == 30) {
+			MainModel.tempoMissao = 0;
+			MainModel.prestigio += 5;
+			Debug.Log ("ta funfando");
+		}else if (MainModel.tempoMissao < 30) {
+			if (MainModel.missao == 1 && MainModel.residencia > 5) {
+				MainModel.tempoMissao++;
+			} else if (MainModel.missao == 2 && MainModel.industria > 5) {
+				MainModel.tempoMissao++;
+			} else if (MainModel.missao == 3 && MainModel.saude > 5) {
+				MainModel.tempoMissao++;
+			} else if (MainModel.missao == 4 && MainModel.seguranca > 5) {
+				MainModel.tempoMissao++;
+			} else if (MainModel.missao == 5 && MainModel.alimento > 5) {
+				MainModel.tempoMissao++;
+			} else if (MainModel.missao == 6 && MainModel.escola > 5) {
+				MainModel.tempoMissao++;
+			} else {
+				MainModel.tempoMissao = 35;
+			}
+		} else if (MainModel.tempoMissao > 30) {
+			MainModel.tempoMissao = 0;
+		}
+	}
+
 	public void verificarResposta (string resposta) {
 		if (resposta == MainModel.questoes [MainModel.auxQuestG, 5]) {
 			MainModel.energia += int.Parse( MainModel.questoes [MainModel.auxQuestG, 6]);
@@ -160,34 +188,40 @@ public class MainController : MonoBehaviour {
 		if (MainModel.energia > 0) {
 			switch (recu) {
 			case 1:
-				if (MainModel.residencia < 10)
+				if (MainModel.residencia < 10) {
 					MainModel.residencia++;
-				MainModel.energia--;
+					MainModel.energia--;
+				}
 				break;
 			case 2:
-				if (MainModel.saude < 10)
+				if (MainModel.saude < 10) {
 					MainModel.saude++;
-				MainModel.energia--;
+					MainModel.energia--;
+				}
 				break;
 			case 3:
-				if (MainModel.escola < 10)
+				if (MainModel.escola < 10) {
 					MainModel.escola++;
-				MainModel.energia--;
+					MainModel.energia--;
+				}
 				break;
 			case 4:
-				if (MainModel.seguranca < 10)
+				if (MainModel.seguranca < 10) {
 					MainModel.seguranca++;
-				MainModel.energia--;
+					MainModel.energia--;
+				}
 				break;
 			case 5:
-				if (MainModel.industria < 10)
+				if (MainModel.industria < 10) {
 					MainModel.industria++;
-				MainModel.energia--;
+					MainModel.energia--;
+				}
 				break;
 			case 6:
-				if (MainModel.alimento < 10)
+				if (MainModel.alimento < 10) {
 					MainModel.alimento++;
-				MainModel.energia--;
+					MainModel.energia--;
+				}
 				break;
 			}
 		}
