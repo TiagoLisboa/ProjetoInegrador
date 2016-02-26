@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{9D813B1C-6F3B-C8DA-F530-0B1CA4AC45D5}") = "Apollo2-teste", "Assembly-CSharp.csproj", "{F922972E-F946-DC74-72FB-530191B9CA08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F922972E-F946-DC74-72FB-530191B9CA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F922972E-F946-DC74-72FB-530191B9CA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F922972E-F946-DC74-72FB-530191B9CA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F922972E-F946-DC74-72FB-530191B9CA08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
