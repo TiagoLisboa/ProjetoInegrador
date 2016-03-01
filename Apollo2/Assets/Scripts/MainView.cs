@@ -33,7 +33,8 @@ public class MainView : MonoBehaviour {
 					varBarSeguranca,
 					varBarAlimento,
 					varBarEnergia,
-					varBarPrestigio;
+					varBarPrestigio,
+					varIndicador;
 
 	private Image varQueNotfIcon;
 
@@ -78,6 +79,8 @@ public class MainView : MonoBehaviour {
 		varBarEnergia = GameObject.Find("barEnergia").GetComponent<Image>();
 		varBarPrestigio = GameObject.Find("barPrestigio").GetComponent<Image>();
 
+		varIndicador = GameObject.Find("indicador").GetComponent<Image>();
+
 		//icone de alerta relatorio
 		varQueNotfIcon = GameObject.Find("quelNotf").GetComponent<Image>();
 
@@ -96,6 +99,8 @@ public class MainView : MonoBehaviour {
 		revelarResultadoMissao ();
 
 		notQues ();
+
+		moverIndicador ();
 	}
 
 	/**********************************************************************/
@@ -105,6 +110,10 @@ public class MainView : MonoBehaviour {
 	public void atualizarRelogio () {
 		varTextDias.text = "" + MainModel.dias;
 		varTextHoras.text = "" + MainModel.tempoInt;
+	}
+
+	public void moverIndicador () {
+		varIndicador.transform.localPosition = new Vector2 ((5*MainModel.tempo)-75, varIndicador.rectTransform.localPosition.y);
 	}
 
 	public void atualizarRecur () {
