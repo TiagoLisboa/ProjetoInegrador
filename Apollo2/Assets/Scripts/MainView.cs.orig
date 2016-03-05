@@ -40,8 +40,8 @@ public class MainView : MonoBehaviour {
 	private Image varQueNotfIcon;
 
 
-	public GameObject questionarioPainel;
-	private Animator anime;
+	public GameObject questionarioPainel, perdeu;
+	private Animator anime, anima;
 
 
 
@@ -87,6 +87,11 @@ public class MainView : MonoBehaviour {
 
 		//animator do questionario
 		anime = questionarioPainel.GetComponent<Animator> ();
+
+		//animator do gameover
+		anima = perdeu.GetComponent<Animator> ();
+
+		varTextGameover = GameObject.Find ("gameover").GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame
@@ -102,11 +107,43 @@ public class MainView : MonoBehaviour {
 		notQues ();
 
 		moverIndicador ();
+		moverPainelPerdeu ();
+<<<<<<< HEAD
+=======
+		acabaRecurso ();
+>>>>>>> 24a0a504b3bc19143ee15340efc3927257ea9abd
 	}
 
 	/**********************************************************************/
 	/*******************************funções********************************/
 	/**********************************************************************/
+
+	public void acabaRecurso(){
+		if (MainModel.escola <= 0) {
+			varTextEscola.text = ""+0;
+			MainModel.escola = 0;
+		}
+		if (MainModel.saude <= 0) {
+			varTextSaude.text = ""+0;
+			MainModel.saude = 0;
+		}
+		if (MainModel.alimento <= 0) {
+			varTextAlimento.text = ""+0;
+			MainModel.alimento = 0;
+		}
+		if (MainModel.seguranca <= 0) {
+			varTextSeguranca.text = ""+0;
+			MainModel.seguranca = 0;
+		}
+		if(MainModel.industria <= 0){
+			varTextIndustria.text = ""+0;
+			MainModel.industria = 0;
+		}
+		if(MainModel.residencia <= 0){
+			varTextResidencia.text = ""+0;			
+			MainModel.residencia = 0;
+		}
+	}
 
 	public void atualizarRelogio () {
 		varTextDias.text = "" + MainModel.dias;
@@ -232,6 +269,14 @@ public class MainView : MonoBehaviour {
 				MainModel.quel = false;
 				anime.Play ("questionarioSlideBack");
 			}
+		}
+	}
+
+	public void moverPainelPerdeu () {
+		if (MainModel.perdeu == true) {
+			varTextGameover.text = "Você sobreviveu por: " + MainModel.dias + " dias";
+			anima.enabled = true;
+			anima.Play ("animacaoPerdeu");
 		}
 	}
 
