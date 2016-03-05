@@ -28,6 +28,7 @@ namespace AssemblyCSharp
 		public static bool 	temQuel = false,
 							quel = false,
 							pause = false,
+							perdeu = false,
 							falhouMissao = false;
 
 		public static string[,] quests = {	

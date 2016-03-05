@@ -1,5 +1,6 @@
-﻿	using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using AssemblyCSharp;
 
 public class MainController : MonoBehaviour {
@@ -13,8 +14,8 @@ public class MainController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		contarTempo ();
 		gameover ();
+		contarTempo ();
 		verificarPausa ();
 	}
 
@@ -92,11 +93,8 @@ public class MainController : MonoBehaviour {
 	}
 
 	public void gameover () {
-		if (MainModel.prestigio > 0) {
-
-		} else {
-			Debug.Log ("perdeeeeuuuu!");
-			Time.timeScale = 0;
+		if (MainModel.prestigio <= 0) {
+			MainModel.perdeu = true;
 		}
 
 		if (MainModel.energia <= 0
@@ -106,10 +104,12 @@ public class MainController : MonoBehaviour {
 		    && MainModel.residencia <= 0
 		    && MainModel.saude <= 0
 		    && MainModel.seguranca <= 0) {
-
-			Debug.Log ("perdeeeeuuuu!");
-			Time.timeScale = 0;
+			MainModel.perdeu = true;
 		}
+	}
+
+	public void voltarMenu () {
+		SceneManager.LoadScene ("menuIniciar");
 	}
 
 	public void gerarMissao(){
@@ -179,7 +179,7 @@ public class MainController : MonoBehaviour {
 	}
 
 	public void verificarPausa () {
-		if (MainModel.pause == true) {
+		if (MainModel.pause == true || MainModel.perdeu == true) {
 			Time.timeScale = 0;
 		} else {
 			Time.timeScale = 1;
