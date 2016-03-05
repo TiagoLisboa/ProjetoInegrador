@@ -17,7 +17,8 @@ public class MainView : MonoBehaviour {
 					varTextAlimento,
 					varTextPrestigio,
 					varTextRelatorio,
-					varTextResultado;
+					varTextResultado,
+					varTextGameover;
 
 	private Text 	questao,
 					resA,
@@ -39,8 +40,8 @@ public class MainView : MonoBehaviour {
 	private Image varQueNotfIcon;
 
 
-	public GameObject questionarioPainel;
-	private Animator anime;
+	public GameObject questionarioPainel, perdeu;
+	private Animator anime, anima;
 
 
 
@@ -86,6 +87,11 @@ public class MainView : MonoBehaviour {
 
 		//animator do questionario
 		anime = questionarioPainel.GetComponent<Animator> ();
+
+		//animator do gameover
+		anima = perdeu.GetComponent<Animator> ();
+
+		varTextGameover = GameObject.Find ("gameover").GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame
@@ -101,6 +107,7 @@ public class MainView : MonoBehaviour {
 		notQues ();
 
 		moverIndicador ();
+		moverPainelPerdeu ();
 	}
 
 	/**********************************************************************/
@@ -231,6 +238,14 @@ public class MainView : MonoBehaviour {
 				MainModel.quel = false;
 				anime.Play ("questionarioSlideBack");
 			}
+		}
+	}
+
+	public void moverPainelPerdeu () {
+		if (MainModel.perdeu == true) {
+			varTextGameover.text = "Você sobreviveu por: " + MainModel.dias + " dias";
+			anima.enabled = true;
+			anima.Play ("animacaoPerdeu");
 		}
 	}
 
