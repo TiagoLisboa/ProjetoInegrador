@@ -108,11 +108,39 @@ public class MainView : MonoBehaviour {
 
 		moverIndicador ();
 		moverPainelPerdeu ();
+		acabaRecurso ();
 	}
 
 	/**********************************************************************/
 	/*******************************funções********************************/
 	/**********************************************************************/
+
+	public void acabaRecurso(){
+		if (MainModel.escola <= 0) {
+			varTextEscola.text = ""+0;
+			MainModel.escola = 0;
+		}
+		if (MainModel.saude <= 0) {
+			varTextSaude.text = ""+0;
+			MainModel.saude = 0;
+		}
+		if (MainModel.alimento <= 0) {
+			varTextAlimento.text = ""+0;
+			MainModel.alimento = 0;
+		}
+		if (MainModel.seguranca <= 0) {
+			varTextSeguranca.text = ""+0;
+			MainModel.seguranca = 0;
+		}
+		if(MainModel.industria <= 0){
+			varTextIndustria.text = ""+0;
+			MainModel.industria = 0;
+		}
+		if(MainModel.residencia <= 0){
+			varTextResidencia.text = ""+0;			
+			MainModel.residencia = 0;
+		}
+	}
 
 	public void atualizarRelogio () {
 		varTextDias.text = "" + MainModel.dias;
