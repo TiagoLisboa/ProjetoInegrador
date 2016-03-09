@@ -41,7 +41,7 @@ public class MainView : MonoBehaviour {
 
 
 	public GameObject questionarioPainel, perdeu;
-	private Animator anime, anima;
+	private Animator anima;
 
 
 
@@ -86,7 +86,7 @@ public class MainView : MonoBehaviour {
 		varQueNotfIcon = GameObject.Find("quelNotf").GetComponent<Image>();
 
 		//animator do questionario
-		anime = questionarioPainel.GetComponent<Animator> ();
+
 
 		//animator do gameover
 		anima = perdeu.GetComponent<Animator> ();
@@ -257,14 +257,16 @@ public class MainView : MonoBehaviour {
 		if (MainModel.temQuel == true) {
 			if (MainModel.quel == false) {
 				MainModel.pause = true;
-				anime.enabled = true;
+				//anime.enabled = true;
 				MainModel.quel = true;
-				anime.Play ("questionarioSlide");
+				//anime.Play ("questionarioSlide");
+				questionarioPainel.transform.localScale = new Vector3 (1,1,1);
 			} else if (MainModel.quel == true) {
 				MainModel.pause = false;
-				anime.enabled = true;
+				//anime.enabled = true;
 				MainModel.quel = false;
-				anime.Play ("questionarioSlideBack");
+				//anime.Play ("questionarioSlideBack");
+				questionarioPainel.transform.localScale = new Vector3 (1,1,1);
 			}
 		}
 	}

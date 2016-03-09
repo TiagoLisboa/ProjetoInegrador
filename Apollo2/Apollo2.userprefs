@@ -1,18 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MenuView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MainModel.cs">
     <Files>
-      <File FileName="Assets\Scripts\MenuView.cs" Line="20" Column="3" />
-      <File FileName="Assets\Scripts\SoundController.cs" Line="10" Column="17" />
       <File FileName="Assets\Scripts\MainController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MainView.cs" Line="51" Column="46" />
-      <File FileName="Assets\Scripts\MainModel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MenuView.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SoundController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainView.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainModel.cs" Line="15" Column="21" />
       <File FileName="Assets\Scripts\MenuController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CityController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Ruindows\Documents\GitHub\ProjetoIntegrador\Apollo2\Assets\Scripts\SoundController.cs" line="8" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

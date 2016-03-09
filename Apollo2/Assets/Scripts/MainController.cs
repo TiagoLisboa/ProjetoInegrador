@@ -17,12 +17,18 @@ public class MainController : MonoBehaviour {
 		gameover ();
 		contarTempo ();
 		verificarPausa ();
+		voltarAnd ();
 	}
 
 	/**********************************************************************/
 	/*******************************funções********************************/
 	/**********************************************************************/
 
+	public void voltarAnd () {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			SceneManager.LoadScene ("menuIniciar");
+		}
+	}
 
 	public void contarTempo(){
 		if (MainModel.tempo > MainModel.maxTempo) {
@@ -128,6 +134,7 @@ public class MainController : MonoBehaviour {
 		Debug.Log ("random = " + rando);
 		if (rando < 60) {
 			MainModel.temQuel = true;
+			MainModel.executarAlerta = true;
 			MainModel.questG = (Random.Range (0, MainModel.questoes.GetLength (0)));
 			if (MainModel.questG != MainModel.auxQuestG) {
 				MainModel.auxQuestG = MainModel.questG;

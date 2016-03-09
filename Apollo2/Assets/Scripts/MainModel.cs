@@ -29,7 +29,9 @@ namespace AssemblyCSharp
 							quel = false,
 							pause = false,
 							perdeu = false,
-							falhouMissao = false;
+							falhouMissao = false,
+							painelInfo = false,
+							executarAlerta = false;
 
 		public static string[,] quests = {	
 			{"", ""},

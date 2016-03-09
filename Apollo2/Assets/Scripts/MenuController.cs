@@ -8,7 +8,7 @@ public class MenuController : MonoBehaviour {
 	}
 
 	void Update () {
-
+		voltarAnd ();
 	}
 		
 	public void iniciar () {
@@ -17,5 +17,11 @@ public class MenuController : MonoBehaviour {
 
 	public void sair(){
 		Application.Quit();
+	}
+
+	public void voltarAnd () {
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Application.Quit ();
+		}
 	}
 }
