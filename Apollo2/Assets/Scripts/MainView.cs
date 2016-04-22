@@ -18,6 +18,7 @@ public class MainView : MonoBehaviour {
 					varTextPrestigio,
 					varTextRelatorio,
 					varTextResultado,
+					varTextFeedback,
 					varTextGameover;
 
 	private Text 	questao,
@@ -40,8 +41,9 @@ public class MainView : MonoBehaviour {
 	private Image varQueNotfIcon;
 
 
-	public GameObject questionarioPainel, perdeu;
+	public GameObject questionarioPainel, perdeu, painelFeedback;
 	private Animator anima;
+	private Animator animaFeedback;
 
 
 
@@ -91,7 +93,13 @@ public class MainView : MonoBehaviour {
 		//animator do gameover
 		anima = perdeu.GetComponent<Animator> ();
 
+		//animator do feedback
+		animaFeedback = painelFeedback.GetComponent<Animator> ();
+
+		varTextFeedback = GameObject.Find ("mensagemfeed").GetComponent<Text> ();
+
 		varTextGameover = GameObject.Find ("gameover").GetComponent<Text> ();
+
 	}
 	
 	// Update is called once per frame
@@ -107,6 +115,7 @@ public class MainView : MonoBehaviour {
 		notQues ();
 
 		moverIndicador ();
+		moverPainelFeedback ();
 		moverPainelPerdeu ();
 		acabaRecurso ();
 	}
@@ -266,7 +275,7 @@ public class MainView : MonoBehaviour {
 				//anime.enabled = true;
 				MainModel.quel = false;
 				//anime.Play ("questionarioSlideBack");
-				questionarioPainel.transform.localScale = new Vector3 (1,1,1);
+				questionarioPainel.transform.localScale = new Vector3 (0,0,0); //fazendo com q o painel das quest suma
 			}
 		}
 	}
@@ -276,6 +285,14 @@ public class MainView : MonoBehaviour {
 			varTextGameover.text = "Você sobreviveu por: " + MainModel.dias + " dias";
 			anima.enabled = true;
 			anima.Play ("animacaoPerdeu");
+		}
+	}
+
+	public void moverPainelFeedback () {
+		if (MainModel.feedback == true) {
+			varTextFeedback.text = "Resposta certa! ajdashdajskdhasjdsalsdajsdlasjdlaskdjdsakjkljdaskljkljsakljsdalj";
+			animaFeedback.enabled = true;
+			animaFeedback.Play ("animacaoPerdeu");
 		}
 	}
 
